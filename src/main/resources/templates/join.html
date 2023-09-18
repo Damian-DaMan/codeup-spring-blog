@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Join</title>
+<head th:include="~{partials/header :: head(pageTitle='Shopping Items')}">
+
 </head>
 <body>
+<div th:include="~{partials/navbar :: navbar}"></div>
+<h1>Items</h1>
 
-<h1 th:text="${cohort}"></h1>
-
-<form action="/join" method="post">
-  <input type="text" name="cohort" id="cohort-ip" class="field" />
-  <button class="btn btn-success">Join now</button>
+<form th:action="@{/join}" method="post">
+  <input type="text" name="item-name" placeholder="Item Name" />
+  <button class="btn btn-success">Add to Cart</button>
 </form>
 
-<!--<div th:each="item : ${shoppingCart}">-->
-<!--  <p class="text-primary" th:text="${item.name}"/>-->
-<!--</div>-->
+<div th:each="item : ${shoppingCart}">
+  <p class="text-primary" th:text="${item.name}"/>
+</div>
 
-<!--<div class="alert alert-danger" th:if="${shoppingCart.size() > 2}">-->
-<!--  This cart has more than two items.-->
-<!--</div>-->
+<div class="alert alert-danger" th:if="${shoppingCart.size() > 2}">
+  This cart has more than two items.
+</div>
 
 
 

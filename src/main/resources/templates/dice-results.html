@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dice Results</title>
+</head>
+<body>
+
+<h1>Read it and Weap</h1>
+
+<h2>You guessed: <span th:text="${guess}"></span></h2>
+
+<h3>Dice doesn't Lie <span th:text="${roll}"></span></h3>
+
+<h4 th:if="${guess == roll}">OMG you're so LUCKY</h4>
+
+<h4 th:if="${guess != roll}">Damn, you suck</h4>
+</body>
+</html>
