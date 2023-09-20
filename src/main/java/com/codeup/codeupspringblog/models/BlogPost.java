@@ -8,10 +8,11 @@ public class BlogPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "int(11) UNSIGNED NOT NULL AUTO_INCREMENT", nullable = false)
     private long id;
-    @Column(nullable = false)
+    @Column(name = "title", columnDefinition = "varchar(200) NOT NULL")
     private String title;
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(name = "body", columnDefinition = "TEXT NOT NULL")
     private String body;
 
     public BlogPost(String title, String body) {
@@ -19,9 +20,16 @@ public class BlogPost {
         this.body = body;
     }
 
+    public BlogPost(long id, String title, String body, User user) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
-//    ^^ this is to join the tables to make a relationship and the anme is the user_id being tied?
+//    ^^ this is to join the tables to make a relationship and the name is the user_id being tied?
     private User user;
 
 

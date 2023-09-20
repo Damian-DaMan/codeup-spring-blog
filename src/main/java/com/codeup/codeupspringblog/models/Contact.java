@@ -1,7 +1,9 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "contacts")
 public class Contact {
