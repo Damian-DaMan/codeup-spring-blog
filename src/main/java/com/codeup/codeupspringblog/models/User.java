@@ -13,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "username",columnDefinition = "varchar(200) NOT NULL", unique = true)
+    @Column(name = "username", columnDefinition = "varchar(200) NOT NULL", unique = true)
     private String username;
 
     @Column(name = "email", columnDefinition = "varchar(200) NOT NULL", unique = true)
@@ -30,6 +30,13 @@ public class User {
 
 //    =========== constructors =================
 
+    //================== Needed for Securtiy ---------------
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
     public List<BlogPost> getBlogPosts() {
         return blogPosts;
